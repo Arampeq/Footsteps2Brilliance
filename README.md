@@ -134,3 +134,19 @@ npm install
 npm run dev
 ```
 
+---
+
+## What I would improve with more time
+
+### Caching for focus re-evaluations
+
+Currently, Redis caches the result of a full evaluation keyed by book URL. When a user switches focus (e.g. from Balanced to Creativity), the app re-calls Claude with a different prompt, incurring extra latency and cost. With more time I would cache each `(url, focus)` combination independently so that switching between previously-seen focuses is instant and free.
+
+### Batch processing — multiple books in one run
+
+The UI currently handles one book at a time. A useful upgrade would be a bulk mode where a teacher can paste a list of book URLs (or upload a CSV) and receive a consolidated report for the whole class in a single run. The backend would process books in parallel with a concurrency limit to avoid hitting Anthropic rate caps.
+
+### Deployed app
+
+The app only runs locally at the moment. I would deploy it to a cloud provider (e.g. Railway or Render for the NestJS backend + Redis, and Vercel for the Next.js frontend) so it is accessible without any local setup, and add a public URL to this README.
+
