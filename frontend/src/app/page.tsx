@@ -4,35 +4,8 @@ import { useState } from "react";
 import UrlInput from "@/components/UrlInput";
 import LoadingState from "@/components/LoadingState";
 import EvaluationReport from "@/components/EvaluationReport";
-import { EvaluationState, EvaluationResult, EvaluationFocus } from "@/types/evaluation";
-
-const API_BASE =
-  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3001";
-
-async function evaluateBook(
-  url: string,
-  force = false,
-  focus: EvaluationFocus = "balanced",
-): Promise<EvaluationResult> {
-  const res = await fetch(`${API_BASE}/evaluate`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ url, force, focus }),
-  });
-
-  if (!res.ok) {
-    let message = `Request failed (${res.status})`;
-    try {
-      const data = await res.json();
-      message = data.message ?? message;
-    } catch {
-    
-    }
-    throw new Error(message);
-  }
-
-  return res.json();
-}
+import { EvaluationState, EvaluationFocus } from "@/types/evaluation";
+import { evaluateBook } from "@/lib/api";
 
 export default function Home() {
   const [state, setState] = useState<EvaluationState>({ status: "idle" });
