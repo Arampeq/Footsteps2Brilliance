@@ -4,6 +4,18 @@ A full-stack web app that evaluates student-authored picture books from the Foot
 
 ---
 
+## Screenshots
+
+| Evaluation report — score & teacher summary | Highlights & suggestions |
+|---|---|
+| ![Score and teacher summary](screenshots/Screenshot1.png) | ![Highlights and suggestions](screenshots/Screenshot3.png) |
+
+| Evaluation rubric | Page-by-page feedback |
+|---|---|
+| ![Evaluation rubric](screenshots/Screenshot4.png) | ![Page-by-page feedback](screenshots/Screenshot2.png) |
+
+---
+
 ## Approach
 
 ### Model choice — Claude Sonnet 4.6
